@@ -107,7 +107,7 @@ public class HelicopterForm implements MouseListener
 			background = new JFrame("Helicopter Game"); 
 			background.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //closes the program when the window is closed
 			background.setResizable(false); //don't allow the user to resize the window
-			background.setSize(new Dimension(818,568));
+			background.setSize(new Dimension(818,550));
 			background.setVisible(true);
 			
 			back = new ImagePanel("SkyBG.png");
@@ -136,12 +136,12 @@ public class HelicopterForm implements MouseListener
 		helicopter = new MovingImage("StraightPlane.png",XPOS,400);
 		
 		for(int x = 0; x < NUMRECS; x++)
-			toprecs.add(new MovingImage("rec2.JPG",RECWIDTH*x,30));
+			toprecs.add(new MovingImage("brwnrec.png",RECWIDTH*x,-78));
 		for(int x = 0; x < NUMRECS; x++)
-			bottomrecs.add(new MovingImage("rec2.JPG",RECWIDTH*x,450));
+			bottomrecs.add(new MovingImage("brwnrec.png",RECWIDTH*x,450));
 			
-		middlerecs.add(new MovingImage("rec2.JPG",1392,randomMidHeight()));
-		middlerecs.add(new MovingImage("rec2.JPG",1972,randomMidHeight()));
+		middlerecs.add(new MovingImage("Missile.png",1392,randomMidHeight()));
+		middlerecs.add(new MovingImage("Missile.png",1972,randomMidHeight()));
 	
 			
 		drawRectangles();
@@ -187,7 +187,7 @@ public class HelicopterForm implements MouseListener
 				if (firstUpdates < numSmoke)
 				{
 					firstUpdates++;
-					smoke.add(new MovingImage("Afterburners.png",187,helicopter.getY()));
+					smoke.add(new MovingImage("Afterburners.png",187,helicopter.getY()+10));
 					for(int x = 0; x < firstUpdates; x++)
 						smoke.set(x,new MovingImage("Afterburners.png",smoke.get(x).getX() - 12, smoke.get(x).getY()));
 				}
@@ -195,7 +195,7 @@ public class HelicopterForm implements MouseListener
 				{
 					for(int x = 0; x < numSmoke - 1; x++)
 						smoke.get(x).setY(smoke.get(x+1).getY());
-					smoke.set(numSmoke - 1,new MovingImage("Afterburners.png",187,helicopter.getY()));
+					smoke.set(numSmoke - 1,new MovingImage("Afterburners.png",187,helicopter.getY()+10));
 				}
 					}
 					back.updateImages(toprecs,middlerecs,bottomrecs,helicopter,smoke);
@@ -206,8 +206,8 @@ public class HelicopterForm implements MouseListener
 	{
 		for(int x = 0; x < (NUMRECS - 1); x++) //move all but the last rectangle 1 spot to the left
 		{
-			toprecs.set(x,new MovingImage("rec2.JPG",RECWIDTH*x,toprecs.get(x+1).getY()));
-			bottomrecs.set(x,new MovingImage("rec2.JPG",RECWIDTH*x,bottomrecs.get(x+1).getY()));
+//			toprecs.set(x,new MovingImage("brwnrec.png",RECWIDTH*x,toprecs.get(x+1).getY()));
+			bottomrecs.set(x,new MovingImage("brwnrec.png",RECWIDTH*x,bottomrecs.get(x+1).getY()));
 		}
 		lastRec();
 	}
@@ -216,13 +216,13 @@ public class HelicopterForm implements MouseListener
 	{
 		if(distance % 400 == 0)
 			moveIncrement++;
-		if(toprecs.get(26).getY() < 2) //if too high, move down
-			moveDown();
+//		if(toprecs.get(26).getY() < 2) //if too high, move down
+//			moveDown();
 		else if (bottomrecs.get(26).getY() > 463) //else if too low, move up
 			moveUp();
 		else //else move randomly
 		{
-			if((int)(Math.random() * 60) == 50)
+			if((int)(Math.random() * 60) == 50)					//the commented on the right doesnt allow top and bottom recs to move randomly
 				randomDrop();
 			else
 			{
@@ -236,20 +236,20 @@ public class HelicopterForm implements MouseListener
 	
 	public void randomDrop()
 	{
-		toprecs.get(26).setY(toprecs.get(26).getY() + (463 - bottomrecs.get(26).getY()));
+//		toprecs.get(26).setY(toprecs.get(26).getY() + (463 - bottomrecs.get(26).getY()));
 		bottomrecs.get(26).setY(463);
 	}
 	
 	public void moveDown()
 	{
-		toprecs.set((NUMRECS - 1),new MovingImage("rec2.JPG",RECWIDTH*(NUMRECS - 1),toprecs.get(26).getY() + moveIncrement));
-		bottomrecs.set((NUMRECS - 1),new MovingImage("rec2.JPG",RECWIDTH*(NUMRECS - 1),bottomrecs.get(26).getY() + moveIncrement));
+//		toprecs.set((NUMRECS - 1),new MovingImage("brwnrec.png",RECWIDTH*(NUMRECS - 1),toprecs.get(26).getY() + moveIncrement));
+		bottomrecs.set((NUMRECS - 1),new MovingImage("brwnrec.png",RECWIDTH*(NUMRECS - 1),bottomrecs.get(26).getY() + moveIncrement));
 	}
 	
 	public void moveUp()
 	{
-		bottomrecs.set((NUMRECS - 1),new MovingImage("rec2.JPG",RECWIDTH*(NUMRECS - 1),bottomrecs.get(26).getY() - moveIncrement));
-		toprecs.set((NUMRECS - 1),new MovingImage("rec2.JPG",RECWIDTH*(NUMRECS - 1),toprecs.get(26).getY() - moveIncrement));
+		bottomrecs.set((NUMRECS - 1),new MovingImage("brwnrec.png",RECWIDTH*(NUMRECS - 1),bottomrecs.get(26).getY() - moveIncrement));
+//		toprecs.set((NUMRECS - 1),new MovingImage("brwnrec.png",RECWIDTH*(NUMRECS - 1),toprecs.get(26).getY() - moveIncrement));
 	}
 	
 	public int randomMidHeight()
@@ -274,13 +274,13 @@ public class HelicopterForm implements MouseListener
 	{
 		if(middlerecs.get(0).getX() > -1 * RECWIDTH)
 		{
-			middlerecs.set(0,new MovingImage("rec2.JPG",middlerecs.get(0).getX() - (RECWIDTH/5), middlerecs.get(0).getY()));
-			middlerecs.set(1,new MovingImage("rec2.JPG",middlerecs.get(1).getX() - (RECWIDTH/5), middlerecs.get(1).getY()));
+			middlerecs.set(0,new MovingImage("Missile.png",middlerecs.get(0).getX() - (RECWIDTH/5), middlerecs.get(0).getY()));
+			middlerecs.set(1,new MovingImage("Missile.png",middlerecs.get(1).getX() - (RECWIDTH/5), middlerecs.get(1).getY()));
 		}
 		else
 		{
-			middlerecs.set(0,new MovingImage("rec2.JPG",middlerecs.get(1).getX() - (RECWIDTH/5), middlerecs.get(1).getY()));
-			middlerecs.set(1,new MovingImage("rec2.JPG",middlerecs.get(0).getX() + 580,randomMidHeight()));
+			middlerecs.set(0,new MovingImage("Missile.png",middlerecs.get(1).getX() - (RECWIDTH/5), middlerecs.get(1).getY()));
+			middlerecs.set(1,new MovingImage("Missile.png",middlerecs.get(0).getX() + 580,randomMidHeight()));
 		}
 	}
 	
@@ -321,7 +321,7 @@ public class HelicopterForm implements MouseListener
 	//moves the helicopter
 	public void updateCopter()
 	{
-		upCount += .08;
+		upCount += .06;
 		if(goingUp)
 		{
 			if(upCount < 3.5)
