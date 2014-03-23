@@ -133,7 +133,7 @@ public class HelicopterForm implements MouseListener
 		bottomrecs = new ArrayList<MovingImage>();
 		smoke = new ArrayList<MovingImage>();
 		
-		helicopter = new MovingImage("StraightPlane.png",XPOS,270);
+		helicopter = new MovingImage("StraightPlane.png",XPOS,400);
 		
 		for(int x = 0; x < NUMRECS; x++)
 			toprecs.add(new MovingImage("rec2.JPG",RECWIDTH*x,30));
@@ -187,15 +187,15 @@ public class HelicopterForm implements MouseListener
 				if (firstUpdates < numSmoke)
 				{
 					firstUpdates++;
-					smoke.add(new MovingImage("smoke.GIF",187,helicopter.getY()));
+					smoke.add(new MovingImage("Afterburners.png",187,helicopter.getY()));
 					for(int x = 0; x < firstUpdates; x++)
-						smoke.set(x,new MovingImage("smoke.GIF",smoke.get(x).getX() - 12, smoke.get(x).getY()));
+						smoke.set(x,new MovingImage("Afterburners.png",smoke.get(x).getX() - 12, smoke.get(x).getY()));
 				}
 				else
 				{
 					for(int x = 0; x < numSmoke - 1; x++)
 						smoke.get(x).setY(smoke.get(x+1).getY());
-					smoke.set(numSmoke - 1,new MovingImage("smoke.GIF",187,helicopter.getY()));
+					smoke.set(numSmoke - 1,new MovingImage("Afterburners.png",187,helicopter.getY()));
 				}
 					}
 					back.updateImages(toprecs,middlerecs,bottomrecs,helicopter,smoke);
