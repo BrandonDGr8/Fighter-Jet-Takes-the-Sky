@@ -6,10 +6,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 
-public class HelicopterForm implements MouseListener
-{
-	public static void main (String [] args)
-	{
+public class HelicopterForm implements MouseListener {
+	public static void main (String [] args) {
 		HelicopterForm a = new HelicopterForm();
 	}
 	
