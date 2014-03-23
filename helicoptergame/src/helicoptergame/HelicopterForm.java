@@ -110,7 +110,7 @@ public class HelicopterForm implements MouseListener
 			background.setSize(new Dimension(818,568));
 			background.setVisible(true);
 			
-			back = new ImagePanel("back.JPG");
+			back = new ImagePanel("SkyBG.png");
 			background.add(back);
 			
 			back.addMouseListener(this);
@@ -133,7 +133,7 @@ public class HelicopterForm implements MouseListener
 		bottomrecs = new ArrayList<MovingImage>();
 		smoke = new ArrayList<MovingImage>();
 		
-		helicopter = new MovingImage("helicopter.GIF",XPOS,270);
+		helicopter = new MovingImage("StraightPlane.png",XPOS,270);
 		
 		for(int x = 0; x < NUMRECS; x++)
 			toprecs.add(new MovingImage("rec2.JPG",RECWIDTH*x,30));
@@ -287,7 +287,7 @@ public class HelicopterForm implements MouseListener
 	public boolean shoot()
 	{
 		for(int x = 3; x <= 7; x++)
-			if(helicopter.getY() + 48 >= bottomrecs.get(x).getY())
+			if(helicopter.getY() + 35 >= bottomrecs.get(x).getY())
 				return true;
 		
 		for(int y = 3; y <= 7; y++)
@@ -302,7 +302,7 @@ public class HelicopterForm implements MouseListener
 	public boolean isInMidRange(int num)
 	{
 		Rectangle middlecheck = new Rectangle((int)middlerecs.get(num).getX(),(int)middlerecs.get(num).getY(),RECWIDTH,RECHEIGHT);
-		Rectangle coptercheck = new Rectangle((int)helicopter.getX(),(int)helicopter.getY(),106,48);
+		Rectangle coptercheck = new Rectangle((int)helicopter.getX(),(int)helicopter.getY(),106,35);
 		return middlecheck.intersects(coptercheck);
 	}
 	
@@ -328,7 +328,7 @@ public class HelicopterForm implements MouseListener
 				helicopter.setPosition(XPOS,(double)(helicopter.getY() - (.3 + upCount)));
 			else
 				helicopter.setPosition(XPOS,(double)(helicopter.getY() - (1.2 + upCount)));
-			helicopter.setImage("upCopter.GIF");	
+			helicopter.setImage("UpPlane.png");	
 		}
 		else
 		{
@@ -336,7 +336,7 @@ public class HelicopterForm implements MouseListener
 				helicopter.setPosition(XPOS,(double)(helicopter.getY() + upCount));
 			else
 				helicopter.setPosition(XPOS,(double)(helicopter.getY() + (1.2 + upCount)));
-			helicopter.setImage("helicopter.GIF");
+			helicopter.setImage("StraightPlane.png");
 		}
 		if(shoot())
 			crash();
