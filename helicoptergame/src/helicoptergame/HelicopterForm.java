@@ -63,7 +63,7 @@ public class HelicopterForm implements MouseListener
 		XPOS = 200;
 		playedOnce = false;
 		maxDistance = 0;
-		distanceForChange = 50;
+		distanceForChange = 100;
 		div = 5.0;
 
 		load(new File("Best.txt"));
@@ -183,14 +183,14 @@ public class HelicopterForm implements MouseListener
 //				if (lastCopter<distanceForChange)
 //					updateMiddle(div);
 //				else if (lastCopter>=distanceForChange){
-//					distanceForChange+=50;
+//					distanceForChange+=100;
 //					updateMiddle(div-0.5);
 //				}
 				if(distance<distanceForChange || div < 2.4){
 					updateMiddle();
 				}
 				else if (distance>=distanceForChange && div>2){
-					distanceForChange+=50;
+					distanceForChange+=100;
 					div-=0.49;
 					updateMiddle();
 				}
@@ -288,7 +288,7 @@ public class HelicopterForm implements MouseListener
 		}
 		min += RECHEIGHT;
 		max -= (RECHEIGHT + min);
-		return min + (int)(Math.random() * max);
+		return (int)(Math.random() * (max+min));
 	}
 
 	//moves the randomly generated middle rectangles
@@ -359,7 +359,7 @@ public class HelicopterForm implements MouseListener
 			maxDistance = distance;
 			save();
 		}
-		distanceForChange=50;
+		distanceForChange=100;
 		div=5;
 
 		initiate();
