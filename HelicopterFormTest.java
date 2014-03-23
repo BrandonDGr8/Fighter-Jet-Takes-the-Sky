@@ -6,11 +6,11 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 
-public class HelicopterForm implements KeyListener
+public class HelicopterFormTest implements KeyListener
 {
 	public static void main (String [] args)
 	{
-		HelicopterForm a = new HelicopterForm();
+		HelicopterFormTest a = new HelicopterFormTest();
 	}
 	
 	private JFrame background;
@@ -55,7 +55,7 @@ public class HelicopterForm implements KeyListener
 	 */
 	
 	
-	public HelicopterForm()
+	public HelicopterFormTest()
 	{
 		NUMRECS = 28;
 		RECHEIGHT = 73;
@@ -428,13 +428,13 @@ class ImagePanel extends JPanel {
  	public void drawStrings(Graphics g)
  	{
  		g.setFont(new Font("Arial",Font.BOLD,20));
-    	g.drawString("Distance: " + HelicopterForm.distance,30,500);
+    	g.drawString("Distance: " + HelicopterFormTest.distance,30,500);
     	g.setFont(new Font("Arial",Font.BOLD,20));
-    	if (HelicopterForm.distance > HelicopterForm.maxDistance)
-    		g.drawString("Best: " + HelicopterForm.distance,650,500);
+    	if (HelicopterFormTest.distance > HelicopterFormTest.maxDistance)
+    		g.drawString("Best: " + HelicopterFormTest.distance,650,500);
     	else
-    		g.drawString("Best: " + HelicopterForm.maxDistance,650,500);
-    	if(HelicopterForm.paused)
+    		g.drawString("Best: " + HelicopterFormTest.maxDistance,650,500);
+    	if(HelicopterFormTest.paused)
     	{
 	    		g.setColor(Color.WHITE);
 	    		g.setFont(new Font("Chiller",Font.BOLD,72));
