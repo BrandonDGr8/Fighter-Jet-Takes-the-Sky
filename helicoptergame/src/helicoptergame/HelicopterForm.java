@@ -108,7 +108,7 @@ public class HelicopterForm implements MouseListener
 	{
 		if(!playedOnce)
 		{
-			background = new JFrame("Helicopter Game"); 
+			background = new JFrame("Fighter Jet Takes the Sky"); 
 			background.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //closes the program when the window is closed
 			background.setResizable(true); //don't allow the user to resize the window
 			background.setSize(new Dimension(818,550));
@@ -490,6 +490,10 @@ class ImagePanel extends JPanel {
 
 	public void drawStrings(Graphics g)
 	{
+		if (!(HelicopterForm.started)){
+			g.setFont(new Font("Arial",Font.BOLD,20));
+			g.drawString("Click to Play!",338,500);
+		}
 		g.setFont(new Font("Arial",Font.BOLD,20));
 		g.drawString("Distance: " + HelicopterForm.distance,30,500);
 		g.setFont(new Font("Arial",Font.BOLD,20));
@@ -505,6 +509,7 @@ class ImagePanel extends JPanel {
 			g.setFont(new Font("Chiller",Font.BOLD,30));
 			g.drawString("Click to unpause.",320,340);
 		}
+		
 	}
 
 	//Replaces the list of foreground images with the one given, and repaints the panel
