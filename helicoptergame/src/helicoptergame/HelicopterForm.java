@@ -140,7 +140,7 @@ public class HelicopterForm implements MouseListener
 		helicopter = new MovingImage("StraightPlane.png",XPOS,400);
 
 		for(int x = 0; x < NUMRECS; x++)
-			toprecs.add(new MovingImage("brwnrec.png",RECWIDTH*x,-78));
+			toprecs.add(new MovingImage("emptyrec.png",RECWIDTH*x,-78));
 		for(int x = 0; x < NUMRECS; x++)
 			bottomrecs.add(new MovingImage("brwnrec.png",RECWIDTH*x,450));
 
@@ -492,7 +492,7 @@ class ImagePanel extends JPanel {
 	{
 		if (!(HelicopterForm.started)){
 			g.setFont(new Font("Arial",Font.BOLD,20));
-			g.drawString("Click to Play!",338,500);
+			g.drawString("Hold click to go up!",334,500);
 		}
 		g.setFont(new Font("Arial",Font.BOLD,20));
 		g.drawString("Distance: " + HelicopterForm.distance,30,500);
