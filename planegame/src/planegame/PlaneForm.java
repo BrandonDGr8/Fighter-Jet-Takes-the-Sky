@@ -12,7 +12,7 @@ public class PlaneForm implements MouseListener
 	{
 		PlaneForm a = new PlaneForm();
 	}
-
+	
 	private JFrame background;
 	private Container container;
 	private JButton button;
@@ -110,7 +110,7 @@ public class PlaneForm implements MouseListener
 		{
 			background = new JFrame("Fighter Jet Takes the Sky"); 
 			background.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //closes the program when the window is closed
-			background.setResizable(true); //don't allow the user to resize the window
+			background.setResizable(false);
 			background.setSize(new Dimension(818,550));
 			background.setVisible(true);
 
